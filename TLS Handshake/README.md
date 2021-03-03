@@ -1,0 +1,7 @@
+# TLS Handshake
+
+In our project, we use google chrome as our default browser identify mismatches in cipher suites. Google Chrome advertise a 16 cipher and uniquely uses GREASE or Generate Random Extensions And Sustain Extensibility. This unique cipher suite is used by chrome to identify servers that reject unknown values. This method is used to strength [TLS's extensibility](https://tools.ietf.org/id/draft-ietf-tls-grease-01.html). Also, Google Chrome uses TLS 1.3, the latest version of TLS for optimized security and efficiency. 
+
+Dr.Web uses TLS 1.2, which by first glance will allow server to identify that HTTPS interception is occurring. The 21 cipher suites that are being used by Dr.Web have no known vulnerability upon researching. However, the cipher suites from Dr.Web are still very different from the ones that are used in Google Chrome. The paper from 2017 stated that Dr.Web used RC4, RC2, and DES which are no longer shown from our case.
+
+Avast and AVG advertise both use TLS 1.2 and the same 16 cipher suites in the same order. Unlike DR. Web, the ciphers used are almost the same as google chrome, with a couple in different order. The only difference is that Avast and AVG advertise TLS_EMPTY_RENEGOTIATION_INFO_SCSV last, which is not a true cipher suite according to [rfc5746](https://tools.ietf.org/html/rfc5746). This cipher is just a way for client to tell that they support renegotiation.
